@@ -1,26 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= movie.title %> </title>
+    <title>
+        <%= movie.title %>
+    </title>
     <link rel='stylesheet' href='/css/style.css' />
 
 </head>
+
 <body>
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-    <h1><%= movie.title %> </h1>    
+
+    <!--     <div class="row">
+        <img class="img-fluid" src="/img/<%= movie.image || 'defaul_img_movie.png' %>" alt="">
+    </div> -->
+
+    <h1>
+        <%= movie.title %>
+    </h1>
     <br>
-    <p>RATING: <%= movie.rating %> </p>
-    <p>AWARDS: <%= movie.awards %> </p>
-    <p>LENGTH: <%= movie.length + ' min'%> </p>
-    <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>RATING: <%= movie.rating %>
+    </p>
+    <p>AWARDS: <%= movie.awards %>
+    </p>
+    <p>LENGTH: <%= movie.length + ' min' %>
+    </p>
+    <p>RELEASE DATE: <%= movie.release_date %>
+    </p>
+    <p>GENERO : <%= movie.genre ? movie.genre.name : 'GENERO NO ENCONTRADO' %>
+    </p>
     <br>
-    <section>
-        <!--Aquí debe colocar los botones de Modificar - Borrar y Listado de Películas-->
-    </section>
+
+    <h1>ACTORES :</h1>
+
+    <% if (movie.actors.length) { %>
+        <ul>
+            <% movie.actors.forEach(actor=> { %>
+                <p>
+                    <%= actor.first_name %>
+                        <%= actor.last_name %>
+                </p>
+                <% }) %>
+        </ul>
+        <% }else{ %>
+            <p>No hay actores registrados</p>
+            <% } %>
+
+                <br>
+                <section>
+                    <a class="botonAgregar" href="/movies/edit/<%= movie.id %>">Editar Pelicula</a>
+                    <a class="botonBorrar" href="/movies/delete/<%= movie.id %>">Eliminar</a>
+                    <a class="botonVolver" href="/movies">Listado de Películas</a>
+                </section>
 
 </body>
+
 </html>

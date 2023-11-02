@@ -35,6 +35,32 @@
                     <% }); %>
                 </select>
             </p>
+
+            <div class="col-12 col-md-4">
+                <div>
+                    <label for="formFile" class="form-label">Agregar Imagen</label>
+                    <input class="form-control" type="file" id="formFile" name="image">
+                </div>
+            </div>
+            
+            
+            <label for="actor_id">Actors </label>
+            <div class="mb-3 col-12">
+                <div class="row">
+                    <% actors.forEach(actor=> { %>
+                        <div class="col-12 col-md-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="<% actor.id %>" id="actor<%= actor.id %>">
+                                        <label class="form-check-label" for="actor<%= actor.id %>">
+                                            <%= actor.first_name %>
+                                                <%= actor.last_name %>
+                                        </label>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+
             <br>
             <p> <button class="botonAgregar" type="submit">Agregar</button>
             
